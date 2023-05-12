@@ -37,7 +37,7 @@ public class AuthService {
     }
     @KafkaListener(topics = {"movie-app"})
     public void consumeMovieData(Movie movie){
-        System.out.printf("Released Movie Details %n Movie Id: %d %n Movie Name: %s %n Total Tickets %s %n Theater Name: %s %n",movie.getMovieId(), movie.getMovieName(),movie.getTotalTickets(),movie.getTheaterName());
+        System.out.printf("New Released Movie Details %n Movie Id: %d %n Movie Name: %s %n Total Tickets %s %n Theater Name: %s %n",movie.getMovieId(), movie.getMovieName(),movie.getTotalTickets(),movie.getTheaterName());
 
 
     }
