@@ -7,6 +7,7 @@ import com.authorization.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import com.authorization.service.AuthService;
 import com.authorization.service.UserService;
 @RestController
 @RequestMapping("auth/v1")
+@CrossOrigin("*")
 public class AuthController {
 private Map<String, String> mapObj = new HashMap<String, String>();
 	
@@ -70,13 +72,13 @@ private Map<String, String> mapObj = new HashMap<String, String>();
 		{
 			String jwtToken = authService.generateToken(user.getLoginId(), user.getPassword());
 			mapObj.put("Message", "User successfully logged in");
-			mapObj.put("Token:", jwtToken);
+			mapObj.put("Token", jwtToken);
 			
 		}
 		catch(Exception e)
 		{
 			mapObj.put("Message", "User not logged in");
-			mapObj.put("Token:", null);
+			mapObj.put("Token", null);
 			return new ResponseEntity<>(mapObj, HttpStatus.UNAUTHORIZED);
 		}
 		
