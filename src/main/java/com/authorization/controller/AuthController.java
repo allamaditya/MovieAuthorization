@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +47,7 @@ private Map<String, String> mapObj = new HashMap<String, String>();
 		
 	}
 	
-	@PatchMapping("/forgetPassword/{userId}")
+	@PutMapping("/forgetPassword/{userId}")
 	public ResponseEntity<?> passwordReset(@PathVariable("userId") String userId, @RequestBody User user)
 	{
 		Object passwordReset = userService.passwordReset(userId, user);
